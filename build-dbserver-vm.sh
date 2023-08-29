@@ -10,17 +10,17 @@ apt-get -y install mysql-server mysql-client
 
 service mysql start
 
-echo "CREATE DATABASE recipeManagementSystem;" | mysql
+echo "CREATE DATABASE RecipeManagementSystem;" | mysql
 echo "CREATE USER 'admin'@'%' IDENTIFIED BY 'admin_pw';" | mysql
-echo "GRANT ALL PRIVILEGES ON recipeManagementSystem.* TO 'admin'@'%'" | mysql
+echo "GRANT ALL PRIVILEGES ON RecipeManagementSystem.* TO 'admin'@'%'" | mysql
 echo "CREATE USER 'user'@'%' IDENTIFIED BY 'user_pw';" | mysql
-echo "GRANT SELECT, INSERT, UPDATE, DELETE ON recipeManagementSystem.* TO 'user'@'%'" | mysql
+echo "GRANT SELECT, INSERT, UPDATE, DELETE ON RecipeManagementSystem.* TO 'user'@'%'" | mysql
 echo FLUSH PRIVILEGES | mysql
 
 export MYSQL_ADMIN_PWD='admin_pw'
 export MYSQL_USER_PWD='user_pw'
 
-cat /vagrant/setup-database.sql | mysql -u admin -p$MYSQL_ADMIN_PWD recipeManagementSystem
+cat /vagrant/setup-database.sql | mysql -u admin -p$MYSQL_ADMIN_PWD RecipeManagementSystem
 
 sed -i'' -e '/bind-address/s/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
 
