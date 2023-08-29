@@ -23,6 +23,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "dbserver" do |dbserver|
         dbserver.vm.hostname = "dbserver"
         dbserver.vm.network "private_network", ip: "192.168.56.12"
+        dbserver.vm.synced_folder "./data", "/vagrant/data", owner: "vagrant", mount_options: ["dmode=775,fmode=777"]
         dbserver.vm.provision "shell", path: "build-dbserver-vm.sh"
     end
 
