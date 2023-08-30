@@ -44,6 +44,7 @@ $conn->close();
                 ?>
                 <form action="<?php echo $isAdmin ? 'http://127.0.0.1:8081/admin.php' : 'http://127.0.0.1:8080/'; ?>" method="GET" style="display:inline;">
                     <button type="submit">Home</button>
+                </form>
                 <form action="../common/sign_out.php" method="POST" style="display:inline;">
                     <button type="submit">Sign Out</button>
                 </form>
