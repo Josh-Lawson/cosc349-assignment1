@@ -38,8 +38,8 @@ create table if not exists RecipeIngredient (
 
 -- dummy data:
 
-insert into User (username, password) values ('user1', 'password1');
-insert into User (username, password) values ('user2', 'password2');
+insert into User (name, username, password) values ('john', 'user1', 'password1');
+insert into User (name, username, password) values ('bob', 'user2', 'password2');
 
 insert into Admin (username, password) values ('admin1', 'password1');
 insert into Admin (username, password) values ('admin2', 'password2');
