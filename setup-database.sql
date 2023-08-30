@@ -1,9 +1,7 @@
-#create database if not exists recipeManagementSystem
-
-#use recipeManagementSystem
 
 create table if not exists User (
     userId int primary key auto_increment,
+    name varchar(255) not null,
     username varchar(255) unique,
     password varchar(255) not null,
     createdDate datetime default current_timestamp
@@ -25,7 +23,8 @@ create table if not exists Recipe (
     recipeId int primary key auto_increment,
     userId int,
     recipeName varchar(255) not null,
-    description text
+    approved boolean default false,
+    instructions text
 );
 
 create table if not exists RecipeIngredient (
@@ -68,6 +67,7 @@ insert into RecipeIngredient (recipeId, ingredientId, quantity) values (3, 1, '5
 --     recipeId int,
 --     rating int,
 --     reviewText text,
+--     approved boolean default false,
 --     foreign key (userId) references User(userId),
 --     foreign key (recipeId) references Recipe(recipeId)
 -- );
@@ -76,6 +76,7 @@ insert into RecipeIngredient (recipeId, ingredientId, quantity) values (3, 1, '5
 --     recipeId int not null,
 --     imageNumber int not null,
 --     imageURL varchar(255) not null,
+--     approved boolean default false,
 --     primary key (recipeId, imageNumber),
 --     foreign key (recipeId) references Recipe(recipeId)
 -- );
