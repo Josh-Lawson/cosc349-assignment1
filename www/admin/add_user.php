@@ -24,7 +24,7 @@ $stmt->bind_param("sss", $name, $username, $password);
 
 $stmt->execute();
 
-echo "New user created successfully";
+//echo "New user created successfully";
 
 $stmt->close();
 $conn->close();
@@ -43,14 +43,13 @@ $conn->close();
 
 <body>
     <main>
-        <h1>Add User</h1>
-        <p><a href="admin.php">Admin Interface</a></p>
+        <h1>Add User</h1><br>
 
         <form action="add_user.php" method="POST">
-            <p>name: <input type="text" name="name" /></p>
-            <p>Username: <input type="text" name="username" /></p>
-            <p>Password: <input type="text" name="password" /></p>
-            <p><input type="submit" value="Add User" /></p>
+            name: <input type="text" name="name" />
+            Username: <input type="text" name="username" />
+            Password: <input type="text" name="password" />
+            <input type="submit" value="Add User" />
         </form>
     </main>
 </body>

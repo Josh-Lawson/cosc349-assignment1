@@ -47,7 +47,7 @@ header {
     text-align: center;
 }
 
-nav a {
+nav a, .delete-button {
     background-color: var(--main-blue);
     color: #FFF;
     padding: 12px 18px;
@@ -58,7 +58,7 @@ nav a {
     font-weight: 500;
 }
 
-nav a:hover {
+nav a:hover, .delete-button:hover {
     background-color: var(--hover-blue);
 }
 
@@ -66,7 +66,11 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    padding: 40px 0;
+}
+
+header nav a {
+    margin: 5px 40px;
 }
  
 table {
@@ -78,6 +82,7 @@ table {
 td, th {
     padding: 12px 15px;
     border-bottom: 2px solid var(--border-gray);
+    text-align: center;
 }
  
 th {
@@ -86,10 +91,12 @@ th {
     font-weight: 500;
 }
  
-form {
+form, form.div {
     display: grid;
-    grid-template-columns: max-content 1fr;
-    grid-gap: 20px 1em;
+    grid-template-columns: max-content 1fr; 
+    grid-gap: 20px 1em; 
+    text-align: center;
+    margin: auto;
 }
  
 label {
@@ -98,7 +105,7 @@ label {
     font-weight: 600;
 }
  
-input, button, select, textarea {
+input, button, select, textarea, .delete-button {
     grid-column: 2 / 3;
     padding: 12px;
     border: 2px solid var(--input-border-gray);
@@ -106,7 +113,7 @@ input, button, select, textarea {
     transition: border-color var(--transition-speed);
 }
  
-button {
+button, .delete-button {
     background-color: var(--main-blue);
     color: #FFF;
     cursor: pointer;
@@ -119,5 +126,73 @@ button:hover {
  
 textarea {
     height: 4.5em;
-    resize: vertical;
+    resize: vertical; 
+}
+
+
+.recipe-details {
+    padding: 20px;
+    border: 2px solid var(--input-border-gray);
+    border-radius: 8px;
+    margin: 20px auto;
+}
+
+.recipe-details p, .recipe-details ul {
+    margin-bottom: 20px;
+}
+
+.recipe-details ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.recipe-details ul li {
+    background-color: #FFF;
+    border: 2px solid var(--input-border-gray);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.recipe-details a {
+    background-color: var(--main-blue);
+    color: #FFF;
+    padding: 12px 18px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color var(--transition-speed);
+    font-weight: 500;
+}
+
+.recipe-details a:hover {
+    background-color: var(--hover-blue);
+}
+
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+li input {
+    margin-right: 10px;
+}
+
+h2, h3 {
+    font-size: 2em;
+    color: var(--main-blue);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+h3 {
+    font-size: 1.5em;
 }

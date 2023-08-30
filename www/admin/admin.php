@@ -17,7 +17,6 @@
             <a href="../common/view_recipes.php">View All Recipes</a>
             <a href="pending_recipes.php">Review Pending Recipes</a>
             <a href="add_recipe.php">Add Recipe</a>
-            <a href="edit_recipe.php">Edit Recipe</a>
             <a href="delete_recipe.php">Delete Recipe</a>
         </nav>
 
