@@ -1,0 +1,114 @@
+/* variables for easy colour pallete changes */
+:root {
+    --main-blue: #007BFF;
+    --hover-blue: #0056b3;
+    --soft-gray: #F5F5F5;
+    --text-gray: #333;
+    --border-gray: #E0E0E0;
+    --input-border-gray: #DDD;
+    --transition-speed: 0.3s;
+}
+ 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+ 
+body {
+    background-color: var(--soft-gray);
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 16px;
+}
+ 
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #FFF;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+ 
+h1 {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 2.5em;
+    color: var(--main-blue);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+ 
+nav a {
+    background-color: var(--main-blue);
+    color: #FFF;
+    padding: 12px 18px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color var(--transition-speed);
+    font-weight: 500;
+}
+ 
+nav a:hover {
+    background-color: var(--hover-blue);
+}
+ 
+nav {
+    padding: 20px 0;
+    text-align: center;
+}
+ 
+table {
+    width: 100%;
+    margin: 30px 0;
+    border-collapse: collapse;
+}
+ 
+td, th {
+    padding: 12px 15px;
+    border-bottom: 2px solid var(--border-gray);
+}
+ 
+th {
+    background-color: var(--main-blue);
+    color: #FFF;
+    font-weight: 500;
+}
+ 
+form {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-gap: 20px 1em;
+}
+ 
+label {
+    grid-column: 1 / 2;
+    text-align: right;
+    font-weight: 600;
+}
+ 
+input, button, select, textarea {
+    grid-column: 2 / 3;
+    padding: 12px;
+    border: 2px solid var(--input-border-gray);
+    border-radius: 8px;
+    transition: border-color var(--transition-speed);
+}
+ 
+button {
+    background-color: var(--main-blue);
+    color: #FFF;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+ 
+button:hover {
+    background-color: var(--hover-blue);
+}
+ 
+textarea {
+    height: 4.5em;
+    resize: vertical;
+}
