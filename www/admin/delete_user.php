@@ -22,73 +22,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $id = $_POST["id"];
 
-?>
+        ?>
 
-<html>
-    <head>
-        <title>Edit User</title>
-        <style>
-            th {
-                text-align: left;
-            }
+        <html>
 
-            table, th, td {
-                border: 2px solid grey;
-                border-collapse: collapse;
-            }
+        <head>
+            <title>Edit User</title>
+            <link rel="stylesheet" type="text/css" href="../common/style/style.css">
+        </head>
 
-            th, td {
-                padding: 0.2em;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Confirma Deletion</h1>
-        <p>Are you sure you want to delete the user with ID <?php echo $id; ?>?</p>
+        <body>
+            <main>
+            <h1>Confirm Deletion</h1>
+            
 
-        <form action = "delete_user.php" method = "POST">
-            <input type = "hidden" name = "id" value="<?php echo $id; ?>">
-            <input type = "hidden" name = "confirm" value="1">
-            <p><input type = "submit" value = "Yes, delete User" /></p>
-        </form>
+            <form action="delete_user.php" method="POST">
+                <p> Are you sure you want to delete the user with ID <?php echo $id; ?>?  </p><br>
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <input type="hidden" name="confirm" value="1">
+                <input type="submit" value="Yes, delete User" />
+            </form>
 
-        <p><a href="admin.php">No, return to Admin Interface</a></p>
-    </body>
+            <p><a href="admin.php">No, return to Admin Interface</a></p>
+    </main>
+        </body>
 
-<?php
+        <?php
     }
 } else {
-?>
+    ?>
 
-<html>
+    <html>
+
     <head>
         <title>Delete User</title>
-        <style>
-            th {
-                text-align: left;
-            }
-
-            table, th, td {
-                border: 2px solid grey;
-                border-collapse: collapse;
-            }
-
-            th, td {
-                padding: 0.2em;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="../common/style/style.css">
     </head>
+
     <body>
-        <h1>Delete User</h1>
-        <p><a href="admin.php">Admin Interface</a></p>
+        <header>
+            <?php include '../common/navbar.php'; ?>
+        </header>
+        <main>
+            <h1>Delete User</h1><br>
 
-        <form action="delete_user.php" method="POST">
-            <p>User ID: <input type="text" name="id" /></p>
-            <p><input type="submit" value="Delete User" /></p>
-        </form>
+            <form action="delete_user.php" method="POST">
+                User ID: <input type="text" name="id" />
+                <input type="submit" value="Delete User" />
+            </form>
+        </main>
     </body>
-</html>
 
-<?php
+    </html>
+
+    <?php
 }
 ?>
