@@ -14,16 +14,18 @@
 
         <h1>Recipe Management</h1>
         <nav>
-            <p><a href="add_recipe.php">Add Recipe</a></p>
-            <p><a href="edit_recipe.php">Edit Recipe</a></p>
-            <p><a href="delete_recipe.php">Delete Recipe</a></p>
+            <a href="../common/view_recipes.php">View All Recipes</a>
+            <a href="pending_recipes.php">Review Pending Recipes</a>
+            <a href="add_recipe.php">Add Recipe</a>
+            <a href="edit_recipe.php">Edit Recipe</a>
+            <a href="delete_recipe.php">Delete Recipe</a>
         </nav>
 
         <h1>User Management</h1>
         <nav>
-            <p><a href="view_users.php">View all users</a></p>
-            <p><a href="add_user.php">Add a new user</a></p>
-            <p><a href="delete_user.php">Delete a user</a></p>
+            <a href="view_users.php">View all users</a>
+            <a href="add_user.php">Add a new user</a>
+            <a href="delete_user.php">Delete a user</a>
         </nav>
 
     </main>

@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['userId'])) {
+    header('Location: ../common/sign_in.php');
+    exit();
+}
+?>
+
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 
@@ -7,22 +15,15 @@
 </head>
 
 <body>
-<header>
+    <header>
         <?php include '../common/navbar.php'; ?>
-</header>
+    </header>
     <main>
-
-        <?php
-        session_start();
-        if (!isset($_SESSION['userId'])) {
-            header('Location: ../common/sign_in.php');
-            exit();
-        }
-        ?>
-
         <h1>Recipe Home Page</h1>
-        <p><a href="view_recipes.php">View All Recipes</a></p>
-        <p><a href="submit_recipe.php">Submit A New Recipe</a></p>
+        <nav>
+            <a href="../common/view_recipes.php">View All Recipes</a>
+            <a href="submit_recipe.php">Submit A New Recipe</a>
+            <nav>
 
     </main>
 

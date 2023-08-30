@@ -32,24 +32,27 @@ $conn->close();
 ?>
 
 <html>
-    <head>
+
+<head>
     <header>
         <?php include '../common/navbar.php'; ?>
-</header>
-        <title>Add User</title>
-        <link rel="stylesheet" type="text/css" href="../common/style/style.css">
-    </head>
-    <body>
-        <main>
+    </header>
+    <title>Add User</title>
+    <link rel="stylesheet" type="text/css" href="../common/style/style.css">
+</head>
+
+<body>
+    <main>
         <h1>Add User</h1>
         <p><a href="admin.php">Admin Interface</a></p>
 
-        <form action = "add_user.php" method = "POST">
-            <p>name: <input type = "text" name = "name" /></p>
-            <p>Username: <input type = "text" name = "username" /></p>
-            <p>Password: <input type = "text" name = "password" /></p>
-            <p><input type = "submit" value = "Add User" /></p>
+        <form action="add_user.php" method="POST">
+            <p>name: <input type="text" name="name" /></p>
+            <p>Username: <input type="text" name="username" /></p>
+            <p>Password: <input type="text" name="password" /></p>
+            <p><input type="submit" value="Add User" /></p>
         </form>
-        </main
-    </body>
+    </main>
+</body>
+
 </html>
