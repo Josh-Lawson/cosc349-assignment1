@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 
 $servername = "192.168.56.12";
 $dbusername = "admin";
@@ -29,9 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-$stmt = $conn->prepare("SELECT recipeId, recipeName, instructions FROM Recipe WHERE approved = FALSE");
-$stmt->execute();
-$stmt->bind_result($recipeId, $recipeName, $instructions);
+// $stmt = $conn->prepare("SELECT * FROM Recipe WHERE approved = 0");
+// if (!$stmt) {
+//     echo "Error: " . $conn->error;
+// }
+// $stmt->execute();
+// $stmt->bind_result($recipeId, $userId, $recipeName, $approved, $instructions);
+
+$result = $conn->query("SELECT * FROM Recipe WHERE approved = 0");
 
 ?>
 <!DOCTYPE html>
@@ -48,22 +53,25 @@ $stmt->bind_result($recipeId, $recipeName, $instructions);
     <header>
         <?php include '../common/navbar.php'; ?>
     </header>
-    <h1>Pending Recipes</h1>
+    <main>
+    <h1>Pending Recipes</h1><br>
     <table border="1">
         <tr>
             <th>Recipe Name</th>
             <th>Instructions</th>
-            <th>Approve</th>
-            <th>Deny</th>
+            <th>Approve Recipe</th>
+            <th>Deny Recipe</th>
         </tr>
-        <?php while ($stmt->fetch()): ?>
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $recipeId = $row['recipeId'];
+                $recipeName = $row['recipeName'];
+                $instructions = $row['instructions'];
+        ?>
             <tr>
-                <td>
-                    <?php echo $recipeName; ?>
-                </td>
-                <td>
-                    <?php echo $instructions; ?>
-                </td>
+                <td><?php echo $recipeName; ?></td>
+                <td><?php echo $instructions; ?></td>
                 <td>
                     <form action="" method="POST">
                         <input type="hidden" name="recipeId" value="<?php echo $recipeId; ?>">
@@ -77,8 +85,14 @@ $stmt->bind_result($recipeId, $recipeName, $instructions);
                     </form>
                 </td>
             </tr>
-        <?php endwhile; ?>
+        <?php
+            }
+        } else {
+            echo "<tr><td colspan='4'>0 results</td></tr>";
+        }
+        ?>
     </table>
+    </main>
 </body>
 
 </html>

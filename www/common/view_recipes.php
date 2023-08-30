@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $filter = $_POST["filter"];
 }
 
-$sql = "SELECT * FROM Recipe";
+$sql = "SELECT * FROM Recipe WHERE approved = 1";
 if ($filter != "") {
     $sql = $sql . " WHERE recipeName LIKE '%$filter%'";
 }
@@ -36,7 +36,7 @@ $result = $conn->query($sql);
         <?php include '../common/navbar.php'; ?>
     </header>
     <main>
-        <h1>View Recipes</h1>
+        <h1>View Recipes</h1><br>
 
         <form action="view_recipes.php" method="POST">
             <div>
@@ -47,17 +47,15 @@ $result = $conn->query($sql);
 
         <table>
             <tr>
-                <th>Recpe ID</th>
-                <th>recipeName</th>
+                <th>Recipe Name</th>
                 <th>Instructions</th>
-                <th>View</th>
+                <th>View Recipe</th>
             </tr>
             <?php
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
-                    echo "<td>" . $row["recipeId"] . "</td>";
                     echo "<td>" . $row["recipeName"] . "</td>";
                     echo "<td>" . $row["instructions"] . "</td>";
                     echo "<td><a href='recipe_redirect.php?recipeId=".$row["recipeId"]."'>View</a></td>";
