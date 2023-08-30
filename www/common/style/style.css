@@ -47,7 +47,7 @@ header {
     text-align: center;
 }
 
-header nav a {
+nav a {
     background-color: var(--main-blue);
     color: #FFF;
     padding: 12px 18px;
@@ -58,19 +58,16 @@ header nav a {
     font-weight: 500;
 }
 
-header nav a:hover {
+nav a:hover {
     background-color: var(--hover-blue);
 }
 
-/* main nav p {
-    margin: 20px 0;
-    color: var(--text-gray);
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
 }
-
-main nav p a {
-    display: inline-block;
-    padding: 10px;
-} */
  
 table {
     width: 100%;
