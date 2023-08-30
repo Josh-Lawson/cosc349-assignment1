@@ -40,7 +40,14 @@ h1 {
     letter-spacing: -0.5px;
 }
  
-nav a {
+header {
+    background-color: #FFF;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    padding: 20px 0;
+    text-align: center;
+}
+
+header nav a {
     background-color: var(--main-blue);
     color: #FFF;
     padding: 12px 18px;
@@ -50,15 +57,20 @@ nav a {
     transition: background-color var(--transition-speed);
     font-weight: 500;
 }
- 
-nav a:hover {
+
+header nav a:hover {
     background-color: var(--hover-blue);
 }
- 
-nav {
-    padding: 20px 0;
-    text-align: center;
+
+/* main nav p {
+    margin: 20px 0;
+    color: var(--text-gray);
 }
+
+main nav p a {
+    display: inline-block;
+    padding: 10px;
+} */
  
 table {
     width: 100%;
