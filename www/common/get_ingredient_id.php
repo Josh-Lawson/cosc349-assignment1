@@ -19,6 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_result($ingredientId);
     $stmt->fetch();
     $stmt->close();
+
+    if (!$ingredientId) {
+        $stmt = $conn->prepare("INSERT INTO Ingredient (ingredientName) VALUES (?)");
+        $stmt->bind_param("s", $ingredientName);
+        $stmt->execute();
+        $ingredientId = $stmt->insert_id;
+        $stmt->close();
+    }
+
     $conn->close();
 
     echo $ingredientId ? $ingredientId : "0";
