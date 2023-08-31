@@ -51,7 +51,7 @@ $result = $conn->query($sql);
                 <th>ID</th>
                 <th>Username</th>
                 <th>Name</th>
-                <th>Delete</th>
+                <th>Delete User</th>
             </tr>
             <?php
 
@@ -61,6 +61,7 @@ $result = $conn->query($sql);
                     echo "<td>" . $row["userId"] . "</td>";
                     echo "<td>" . $row["username"] . "</td>";
                     echo "<td>" . $row["name"] . "</td>";
+                    echo "<td><a href='delete_user.php?userId=".$row["userId"]."'>Delete</a></td>";
                     echo "</tr>";
                 }
             } else {

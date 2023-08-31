@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     $.ajax({
                         type: 'POST',
-                        url: 'get_ingredient_id.php',
+                        url: '../common/get_ingredient_id.php',
                         data: { ingredientName: ingredientName },
                         success: function (ingredientId) {
                             if (ingredientId != "0") {
