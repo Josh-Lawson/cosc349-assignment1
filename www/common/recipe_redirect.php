@@ -13,15 +13,16 @@ if ($conn->connect_error) {
 
 $userId = $_SESSION['userId'];
 
-$stmt = $conn->prepare("SELECT * FROM Admin WHERE adminId = ?");
+$stmt = $conn->prepare("SELECT role FROM User WHERE userId = ?");
 $stmt->bind_param("i", $userId);
 $stmt->execute();
-$isAdmin = $stmt->fetch();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
 $stmt->close();
 
 $recipeId = $_GET['recipeId'];
 
-if($isAdmin){
+if($row['role'] == 'admin'){
     header("Location: http://127.0.0.1:8081/recipe_admin_view.php?recipeId=$recipeId");
 } else {
     header("Location: http://127.0.0.1:8080/recipe_user_view.php?recipeId=$recipeId");
