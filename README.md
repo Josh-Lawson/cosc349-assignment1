@@ -1,4 +1,4 @@
-# Online recipe management system
+# Online Recipe Management System
 
 ## Brief Description
 
@@ -55,18 +55,18 @@ Admin will be able to:
 2. Check that you have vagrant installed
     - You can do this by running `$ vagrant --version`
 3. If you do not have vagrant installed you can install it here: 
-    `https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant`
+    <https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant>
 4. Make sure you have VirtualBox downloaded on your machine
     - If you do not already have VitualBox, you can download it here:
-    `https://www.virtualbox.org/wiki/Downloads`
+    <https://www.virtualbox.org/wiki/Downloads>
     - If you are running on arm64 architecture you will need to download the 
     'macOS/ARM64 BETA' version from the test builds (although as this is a 
     developer preview, you may encounter issues):
-    `https://www.virtualbox.org/wiki/Testbuilds`
+    <https://www.virtualbox.org/wiki/Testbuilds>
 5. From the clones project repository location run: `$ vagrant up`
     - This will automatically start the build process and the application will 
     start runing
-6. You can view the web server on your browser by visiting `http://127.0.0.1:8080/`
+6. You can view the web server on your browser by visiting 'http://127.0.0.1:8080/'
 
 
 ## Developing and Re-building the application
