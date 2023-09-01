@@ -7,8 +7,8 @@ machines; a user interface, a database server, and an admin interface.
 
 ## VM 1: User Interface
 
-This vm will be repsonsible for running the web interface of the application, which includes
-the front-end where users interact with the system.
+This vm will be repsonsible for running the user web interface of the application, where 
+users interact with the system.
 
 Users will be able to:
 
@@ -38,8 +38,9 @@ The database has the following tables:
 
 ## VM 3: Admin Interface
 
-This vm will be responsible for running the back end of the application and will provide
-administrative functionality
+This vm will be responsible for running the admin web interface of the application, 
+where administrators interact with the system with a higher level of
+privilege than regular users.
 
 Admin will be able to:
 
