@@ -1,4 +1,15 @@
 <?php
+$servername = "192.168.56.12";
+$dbusername = "admin";
+$dbpassword = "admin_pw";
+$dbname = "RecipeManagementSystem";
+
+$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 $recipeId = $_POST['recipeId'];
 $recipeName = $_POST['recipeName'];
 $instructions = $_POST['instructions'];
@@ -9,16 +20,9 @@ $stmt = $conn->prepare("UPDATE Recipe SET recipeName = ?, instructions = ? WHERE
 $stmt->bind_param("ssi", $recipeName, $instructions, $recipeId);
 $stmt->execute();
 
-$stmt = $conn->prepare("DELETE FROM Ingredient WHERE recipeId = ?");
+$stmt = $conn->prepare("DELETE Ingredient FROM Ingredient JOIN RecipeIngredient ON Ingredient.ingredientId = RecipeIngredient.ingredientId WHERE RecipeIngredient.recipeId = ?");
 $stmt->bind_param("i", $recipeId);
 $stmt->execute();
 
-$stmt = $conn->prepare("INSERT INTO Ingredient (recipeId, ingredientName, quantity) VALUES (?, ?, ?)");
-foreach($ingredientNames as $index => $ingredientName) {
-    $quantity = $quantities[$index];
-    $stmt->bind_param("isi", $recipeId, $ingredientName, $quantity);
-    $stmt->execute();
-}
-
-header("Location: recipe_admin.php?recipeId=$recipeId");
+header("Location: recipe_admin_view.php?recipeId=$recipeId");
 ?>
