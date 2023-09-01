@@ -63,7 +63,7 @@ Admin will be able to:
     'macOS/ARM64 BETA' version from the test builds (although as this is a 
     developer preview, you may encounter issues):
     <https://www.virtualbox.org/wiki/Testbuilds>
-5. From the clones project repository location run: `$ vagrant up`
+5. From the cloned project repository location run: `$ vagrant up`
     - This will automatically start the build process and the application will 
     start runing
 6. You can view the web server on your browser by visiting 'http://127.0.0.1:8080/'
