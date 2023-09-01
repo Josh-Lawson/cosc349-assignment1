@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $filter = $_POST["filter"];
 }
 
-$sql = "SELECT userId, username, name FROM User";
+$sql = "SELECT * FROM User WHERE role = 'user'";
 if ($filter != "") {
     $sql = $sql . " WHERE name LIKE '%$filter%' OR username LIKE '%$filter%'";
 }
@@ -51,6 +51,7 @@ $result = $conn->query($sql);
                 <th>ID</th>
                 <th>Username</th>
                 <th>Name</th>
+                <th>Date Created</th>
                 <th>Delete User</th>
             </tr>
             <?php
@@ -61,6 +62,7 @@ $result = $conn->query($sql);
                     echo "<td>" . $row["userId"] . "</td>";
                     echo "<td>" . $row["username"] . "</td>";
                     echo "<td>" . $row["name"] . "</td>";
+                    echo "<td>" . $row["createdDate"] . "</td>";
                     echo "<td><a href='delete_user.php?userId=".$row["userId"]."'>Delete</a></td>";
                     echo "</tr>";
                 }
