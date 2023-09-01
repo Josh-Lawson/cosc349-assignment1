@@ -26,7 +26,7 @@ contains data related to this application.
 The database has the following tables:
 
 1. User 
-    - Stores information realted to the user such as username and password
+    - Stores information related to the user such as username and password
     - Stores access level of user (user or admin)
 3. Ingredient
     - Stores names and identifiers of all ingredients used in the system
