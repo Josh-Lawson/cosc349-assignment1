@@ -54,7 +54,7 @@ $conn->close();
                     <?php foreach ($ingredients as $index => $ingredient): ?>
                         <li>
                             <input type="text" name="ingredientName[]" value="<?php echo $ingredient['ingredientName']; ?>">
-                            -
+                            - &nbsp;
                             <input type="text" name="quantity[]" value="<?php echo $ingredient['quantity']; ?>">
                         </li>
                     <?php endforeach; ?>
