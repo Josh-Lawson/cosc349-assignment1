@@ -27,8 +27,7 @@ The database has the following tables:
 
 1. User 
     - Stores information realted to the user such as username and password
-2. Admin
-    - Stores information related to the admin
+    - Stores access level of user (user or admin)
 3. Ingredient
     - Stores names and identifiers of all ingredients used in the system
 4. Recipe

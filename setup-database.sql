@@ -4,13 +4,7 @@ create table if not exists User (
     name varchar(255) not null,
     username varchar(255) unique,
     password varchar(255) not null,
-    createdDate datetime default current_timestamp
-);
-
-create table if not exists Admin (
-    adminId int primary key auto_increment,
-    username varchar(255) unique,
-    password varchar(255) not null,
+    role enum('user', 'admin') default 'user',
     createdDate datetime default current_timestamp
 );
 
