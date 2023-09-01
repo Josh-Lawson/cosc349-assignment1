@@ -44,7 +44,6 @@ privilege than regular users.
 
 Admin will be able to:
 
-1. Create, edit or delete user accounts
-2. Create, edit, or delete recipes
+1. Create and delete user accounts
+2. Create, edit, and delete recipes
 3. Approve or deny recipes submitted by users and pending review
-4. Generate reports (such as most popular recipes)
