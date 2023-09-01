@@ -1,10 +1,9 @@
 
 -- insert 1 admin and 1 user for testing:
 
-insert into User (name, username, password, role) values ('admin', 'admin1', 'password1', 'admin'); -- admin
-
 insert into User (name, username, password) values ('User', 'user123', 'password123'); -- user
 
+insert into User (name, username, password, role) values ('admin', 'admin1', 'password1', 'admin'); -- admin
 
 -- Chat GPT was used to generate the below insert statements given a prompt detailing the database structure.
 
