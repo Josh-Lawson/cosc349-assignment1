@@ -7,8 +7,8 @@ machines; a user interface, a database server, and an admin interface.
 
 ## VM 1: User Interface
 
-This vm will be repsonsible for running the web interface of the application, which includes
-the front-end where users interact with the system.
+This vm will be repsonsible for running the user web interface of the application, where 
+users interact with the system.
 
 Users will be able to:
 
@@ -26,7 +26,7 @@ contains data related to this application.
 The database has the following tables:
 
 1. User 
-    - Stores information realted to the user such as username and password
+    - Stores information related to the user such as username and password
     - Stores access level of user (user or admin)
 3. Ingredient
     - Stores names and identifiers of all ingredients used in the system
@@ -38,12 +38,12 @@ The database has the following tables:
 
 ## VM 3: Admin Interface
 
-This vm will be responsible for running the back end of the application and will provide
-administrative functionality
+This vm will be responsible for running the admin web interface of the application, 
+where administrators interact with the system with a higher level of
+privilege than regular users.
 
 Admin will be able to:
 
-1. Create, edit or delete user accounts
-2. Create, edit, or delete recipes
+1. Create and delete user accounts
+2. Create, edit, and delete recipes
 3. Approve or deny recipes submitted by users and pending review
-4. Generate reports (such as most popular recipes)
