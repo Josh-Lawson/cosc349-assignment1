@@ -1,4 +1,4 @@
-# Online recipe management system
+# Online Recipe Management System
 
 ## Brief Description
 
