@@ -23,6 +23,7 @@ if ($conn->connect_error) {
 
 $recipeId = $_POST['recipeId'];
 $recipeName = $_POST['recipeName'];
+$description = $_POST['description'];
 $instructions = $_POST['instructions'];
 $ingredientNames = $_POST['ingredientName'];
 $quantities = $_POST['quantity'];
@@ -30,8 +31,8 @@ $quantities = $_POST['quantity'];
 /**
  * Prepares a SQL statement to update the recipe in the database
  */
-$stmt = $conn->prepare("UPDATE Recipe SET recipeName = ?, instructions = ? WHERE recipeId = ?");
-$stmt->bind_param("ssi", $recipeName, $instructions, $recipeId);
+$stmt = $conn->prepare("UPDATE Recipe SET recipeName = ?, instructions = ?, description = ? WHERE recipeId = ?");
+$stmt->bind_param("sssi", $recipeName, $instructions, $description, $recipeId);
 $stmt->execute();
 
 /**

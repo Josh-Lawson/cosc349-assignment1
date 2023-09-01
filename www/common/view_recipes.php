@@ -68,7 +68,7 @@ $result = $conn->query($sql);
         <table>
             <tr>
                 <th>Recipe Name</th>
-                <th>Instructions</th>
+                <th>Description</th>
                 <th>View Recipe</th>
             </tr>
             <?php
@@ -79,7 +79,7 @@ $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row["recipeName"] . "</td>";
-                    echo "<td>" . $row["instructions"] . "</td>";
+                    echo "<td>" . $row["description"] . "</td>";
                     echo "<td><a href='recipe_redirect.php?recipeId=".$row["recipeId"]."'>View</a></td>";
                     echo "</tr>";
                 }

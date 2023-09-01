@@ -38,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $conn->prepare("DELETE FROM User WHERE userId = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        echo "User deleted successfully";
         $stmt->close();
         $conn->close();
+        header("Location: admin.php");
     } else {
         $id = $_POST["id"];
 

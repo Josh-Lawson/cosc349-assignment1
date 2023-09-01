@@ -77,6 +77,7 @@ $result = $conn->query("SELECT * FROM Recipe WHERE approved = 0");
     <table border="1">
         <tr>
             <th>Recipe Name</th>
+            <th>Description</th>
             <th>Instructions</th>
             <th>Approve Recipe</th>
             <th>Deny Recipe</th>
@@ -86,10 +87,12 @@ $result = $conn->query("SELECT * FROM Recipe WHERE approved = 0");
             while ($row = $result->fetch_assoc()) {
                 $recipeId = $row['recipeId'];
                 $recipeName = $row['recipeName'];
+                $description = $row['description'];
                 $instructions = $row['instructions'];
         ?>
             <tr>
                 <td><?php echo $recipeName; ?></td>
+                <td><?php echo $description; ?></td>
                 <td><?php echo $instructions; ?></td>
                 <td>
                     <form action="" method="POST">

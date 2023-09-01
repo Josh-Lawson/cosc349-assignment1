@@ -197,7 +197,6 @@ h3 {
     font-size: 1.5em;
 }
 
-
 .instructions-container {
     display: flex;
 }
@@ -206,9 +205,3 @@ h3 {
     padding-right: 10px;
     font-weight: bold;
 }
-
-/* .instructions-box {
-    border: 1px solid #000;
-    padding: 10px;
-    flex-grow: 1;
-} */

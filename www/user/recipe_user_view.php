@@ -56,6 +56,14 @@ $conn->close();
             <h1>
                 <?php echo $recipe['recipeName']; ?>
             </h1>
+            <div class="description-container">
+                <label>Description</label>
+                <ul>
+                    <li>
+                        <?php echo $recipe['description']; ?>
+                    </li>
+                </ul>
+            </div>
             <div class="instructions-container">
                 <label>Instructions</label>
                 <ul>

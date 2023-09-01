@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $instructions = $_POST['instructions'];
     $ingredients = $_POST['ingredients'];
     $quantities = $_POST['quantities'];
+    $description = $_POST['description'];
 
     $conn->begin_transaction();
 
@@ -39,11 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      * Prepares a SQL statement to insert the new recipe into the database
      */
     try {
-        $stmt = $conn->prepare("INSERT INTO Recipe (userId, recipeName, instructions) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO Recipe (userId, recipeName, instructions, description) VALUES (?, ?, ?, ?)");
         if ($stmt === false) {
             throw new Exception($conn->error);
         }
-        $stmt->bind_param("iss", $userId, $recipeName, $instructions);
+        $stmt->bind_param("isss", $userId, $recipeName, $instructions, $description);
         $stmt->execute();
         $recipeId = $stmt->insert_id;
 
@@ -126,6 +127,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <label for="recipeName">Recipe Name</label>
                 <input type="text" id="recipeName" name="recipeName" required>
+
+                <label for="description">Description</label>
+                <textarea id="description" name="description" required></textarea>
 
                 <label for="instructions">Instructions</label>
                 <textarea id="instructions" name="instructions" required></textarea><br>

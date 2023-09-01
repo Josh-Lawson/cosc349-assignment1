@@ -18,6 +18,7 @@ create table if not exists Recipe (
     userId int,
     recipeName varchar(255) not null,
     instructions text,
+    description text,
     approved boolean default false
     
 );

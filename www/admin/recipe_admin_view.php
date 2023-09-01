@@ -57,16 +57,17 @@ $conn->close();
 
         <form action="edit_recipe.php" method="POST">
 
-
             <h3>Recipe Name</h3>
             <input type="text" name="recipeName" value="<?php echo $recipe['recipeName']; ?>">
+
+            <h3>Description</h3>
+            <textarea name="description"><?php echo $recipe['description']; ?></textarea>
 
             <h3>Instructions</h3>
             <textarea name="instructions"><?php echo $recipe['instructions']; ?></textarea>
 
             <h3>Ingredients</h3>
             <div>
-
                 <ul>
                     <?php foreach ($ingredients as $index => $ingredient): ?>
                         <li>
@@ -78,12 +79,8 @@ $conn->close();
                 </ul>
             </div>
 
-
             <input type="hidden" name="recipeId" value="<?php echo $recipeId; ?>">
             <button type="submit">Update Recipe</button>
-
-            <!-- <a href="delete_recipe.php?recipeId=<? //php echo $recipeId; ?>" >Delete Recipe</a> -->
-
 
         </form>
         &nbsp;
