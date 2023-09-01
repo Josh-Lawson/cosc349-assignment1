@@ -71,7 +71,7 @@ $conn->close();
         </form>
         &nbsp;
 
-        <form method="GET" action="delete_recipe.php?recipeId=<?php echo $recipeId; ?>"
+        <form method="POST" action="delete_recipe.php?recipeId=<?php echo $recipeId; ?>"
                 onsubmit="return confirm('Are you sure you want to delete this recipe?');">
                 <input type="hidden" name="recipeId" value="<?php echo $recipeId; ?>">
                 <button type="submit">Delete Recipe</button>
