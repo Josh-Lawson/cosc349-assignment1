@@ -32,9 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 /**
  * Prepares a SQL statement to get all recipes
  */
-$sql = "SELECT * FROM Recipe WHERE approved = 1";
+$sql = "SELECT DISTINCT Recipe.* FROM Recipe 
+        JOIN RecipeIngredient ON Recipe.recipeId = RecipeIngredient.recipeId 
+        JOIN Ingredient ON RecipeIngredient.ingredientId = Ingredient.ingredientId
+        WHERE Recipe.approved = 1";
 if ($filter != "") {
-    $sql = $sql . " WHERE recipeName LIKE '%$filter%'";
+    $sql = $sql . " AND (recipeName LIKE '%$filter%' OR instructions LIKE '%$filter%')";
 }
 
 $result = $conn->query($sql);

@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  */
 $sql = "SELECT * FROM User WHERE role = 'user'";
 if ($filter != "") {
-    $sql = $sql . " WHERE name LIKE '%$filter%' OR username LIKE '%$filter%'";
+    $sql = $sql . " AND (name LIKE '%$filter%' OR username LIKE '%$filter%')";
 }
 
 $result = $conn->query($sql);
@@ -58,7 +58,7 @@ $result = $conn->query($sql);
 
         <form action="view_users.php" method="POST">
             <div>
-                Filter: <input type="text" name="filter" value="<?php echo $filter; ?>" />
+                Search: <input type="text" name="filter" value="<?php echo $filter; ?>" />
                 <input type="submit" value="Filter" />
             </div>
         </form>
