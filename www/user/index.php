@@ -1,11 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['userId'])) {
-    header('Location: ../common/sign_in.php');
-    exit();
-}
-?>
-
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 

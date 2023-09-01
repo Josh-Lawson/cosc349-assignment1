@@ -1,26 +1,49 @@
 <?php
-//session_start();
+/**
+ * @file
+ * This file is used to view pending recipes that have been submitted by users.
+ * 
+ */
 
+/**
+ * Holds database connection details
+ */
 $servername = "192.168.56.12";
 $dbusername = "admin";
 $dbpassword = "admin_pw";
 $dbname = "RecipeManagementSystem";
 
+/**
+ * Creates a new mysqli object and connects to the database
+ */
 $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
+/**
+ * Checks if the request method is POST
+ */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    /**
+     * Checks if the approve button was clicked
+     */
     if (isset($_POST['approve'])) {
         $recipeId = $_POST['recipeId'];
+
+        /**
+         * Prepares a SQL statement to add the recipe to the database
+         */
         $stmt = $conn->prepare("UPDATE Recipe SET approved = TRUE WHERE recipeId = ?");
         $stmt->bind_param("i", $recipeId);
         $stmt->execute();
         $stmt->close();
+
     } elseif (isset($_POST['deny'])) {
+
+        /**
+         * Prepares a SQL statement to delete the recipe from the database
+         */
         $recipeId = $_POST['recipeId'];
         $stmt = $conn->prepare("DELETE FROM Recipe WHERE recipeId = ?");
         $stmt->bind_param("i", $recipeId);
@@ -29,13 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// $stmt = $conn->prepare("SELECT * FROM Recipe WHERE approved = 0");
-// if (!$stmt) {
-//     echo "Error: " . $conn->error;
-// }
-// $stmt->execute();
-// $stmt->bind_result($recipeId, $userId, $recipeName, $approved, $instructions);
-
+/**
+ * Prepares a SQL statement to select all pending recipes from the database
+ */
 $result = $conn->query("SELECT * FROM Recipe WHERE approved = 0");
 
 ?>

@@ -1,5 +1,15 @@
 <?php
+/**
+ * @file
+ * This file is used to display the navigation bar.
+ * 
+ */
+
 session_start();
+
+/**
+ * Redirects to the sign in page if the user is not signed in
+ */
 if (!isset($_SESSION['username'])) {
     header('Location: ../common/sign_in.php');
     exit();
@@ -19,6 +29,9 @@ if (!isset($_SESSION['username'])) {
     <div class="navbar">
         <div>
             <?php
+            /**
+             * Displays the user's username and a sign out button if the user is signed in.
+             */
             if (isset($_SESSION['username'])) {
                 echo 'Welcome, ' . $_SESSION['username'];
                 ?>

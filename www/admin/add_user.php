@@ -1,11 +1,22 @@
 <?php
+/**
+ * @file
+ * This file is used to add a new user.
+ * 
+ */
+
+/**
+ * Holds database connection details
+ */
 $servername = "192.168.56.12";
 $username = "admin";
 $password = "admin_pw";
 $dbname = "RecipeManagementSystem";
 
+/**
+ * Creates a new mysqli object and connects to the database
+ */
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -14,6 +25,9 @@ $name = $_POST["name"];
 $username = $_POST["username"];
 $password = $_POST["password"];
 
+/**
+ * Prepares a SQL statement to insert the new user into the database
+ */
 $stmt = $conn->prepare("INSERT INTO User (name, username, password) VALUES (?, ?, ?)");
 
 if (!$stmt) {
@@ -21,11 +35,7 @@ if (!$stmt) {
 }
 
 $stmt->bind_param("sss", $name, $username, $password);
-
 $stmt->execute();
-
-//echo "New user created successfully";
-
 $stmt->close();
 $conn->close();
 

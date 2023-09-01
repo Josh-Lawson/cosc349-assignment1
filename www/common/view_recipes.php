@@ -1,20 +1,37 @@
 <?php
+/**
+ * @file
+ * This file is used to view recipes.
+ * 
+ */
+
+/**
+ * Holds database connection details
+ */
 $servername = "192.168.56.12";
 $username = "admin";
 $password = "admin_pw";
 $dbname = "RecipeManagementSystem";
 
+/**
+ * Creates a new mysqli object and connects to the database
+ */
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+/**
+ * Checks if the request method is POST and sets the filter variable
+ */
 $filter = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $filter = $_POST["filter"];
 }
 
+/**
+ * Prepares a SQL statement to get all recipes
+ */
 $sql = "SELECT * FROM Recipe WHERE approved = 1";
 if ($filter != "") {
     $sql = $sql . " WHERE recipeName LIKE '%$filter%'";
@@ -52,7 +69,9 @@ $result = $conn->query($sql);
                 <th>View Recipe</th>
             </tr>
             <?php
-
+            /**
+             * Loops through the results of the SQL query and displays them in a table
+             */
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";

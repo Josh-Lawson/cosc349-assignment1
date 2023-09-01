@@ -1,17 +1,31 @@
 <?php
+/**
+ * @file
+ * This file is used to add a new recipe.
+ * 
+ */
+
 session_start();
 
+/**
+ * Holds database connection details
+ */
 $servername = "192.168.56.12";
 $dbusername = "admin";
 $dbpassword = "admin_pw";
 $dbname = "RecipeManagementSystem";
 
+/**
+ * Creates a new mysqli object and connects to the database
+ */
 $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+/**
+ * Checks if the request method is POST
+ */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userId = $_SESSION['userId'];
     $recipeName = $_POST['recipeName'];
@@ -21,6 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $conn->begin_transaction();
 
+    /**
+     * Prepares a SQL statement to insert the new recipe into the database
+     */
     try {
         $stmt = $conn->prepare("INSERT INTO Recipe (userId, recipeName, instructions, approved) VALUES (?, ?, ?, 1)");
         if ($stmt === false) {
@@ -30,6 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute();
         $recipeId = $stmt->insert_id;
 
+        /**
+         * Prepares a SQL statement to insert each recipe ingredient into the database
+         */
         for ($i = 0; $i < count($ingredients); $i++) {
             $ingredientId = $ingredients[$i];
             $quantity = $quantities[$i];
@@ -41,6 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $conn->commit();
         $stmt->close();
         $conn->close();
+
+        /**
+         * Redirects to the admin page
+         */
         header("Location: admin.php");
         echo "Recipe submitted successfully!";
     } catch (Exception $e) {

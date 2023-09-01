@@ -1,20 +1,37 @@
 <?php
+/**
+ * @file
+ * This file is used to view users.
+ * 
+ */
+
+/**
+ * Holds database connection details
+ */
 $servername = "192.168.56.12";
 $username = "admin";
 $password = "admin_pw";
 $dbname = "RecipeManagementSystem";
 
+/**
+ * Creates a new mysqli object and connects to the database
+ */
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+/**
+ * Checks if the request method is POST and sets the filter variable
+ */
 $filter = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $filter = $_POST["filter"];
 }
 
+/**
+ * Prepares a SQL statement to get all users
+ */
 $sql = "SELECT * FROM User WHERE role = 'user'";
 if ($filter != "") {
     $sql = $sql . " WHERE name LIKE '%$filter%' OR username LIKE '%$filter%'";
@@ -55,7 +72,9 @@ $result = $conn->query($sql);
                 <th>Delete User</th>
             </tr>
             <?php
-
+            /**
+             * Loops through the results from the database and displays them in a table
+             */
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";

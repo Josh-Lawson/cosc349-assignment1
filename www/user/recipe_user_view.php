@@ -1,21 +1,38 @@
 <?php
+/**
+ * @file
+ * This file is used to display a recipe to the user.
+ * 
+ */
+
+/**
+ * Holds database connection details
+ */
 $servername = "192.168.56.12";
 $username = "admin";
 $password = "admin_pw";
 $dbname = "RecipeManagementSystem";
 
+/**
+ * Creates a new mysqli object and connects to the database
+ */
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 $recipeId = $_GET['recipeId'];
 
+/**
+ * Prepares a SQL statement to get the recipe and ingredients
+ */
 $sql = "SELECT * FROM Recipe WHERE recipeId = $recipeId";
 $result = $conn->query($sql);
 $recipe = $result->fetch_assoc();
 
+/**
+ * Prepares a SQL statement to get the ingredients for the recipe selected
+ */
 $sql = "SELECT * FROM RecipeIngredient JOIN Ingredient ON RecipeIngredient.ingredientId = Ingredient.ingredientId WHERE recipeId = $recipeId";
 $result = $conn->query($sql);
 $ingredients = $result->fetch_all(MYSQLI_ASSOC);
