@@ -35,14 +35,48 @@ $stmt->bind_param("ssi", $recipeName, $instructions, $recipeId);
 $stmt->execute();
 
 /**
- * Prepares a SQL statement to delete the recipe ingredients from the database
+ * Prepares a SQL statement to delete each recipe ingredient from the database
  */
-$stmt = $conn->prepare("DELETE Ingredient FROM Ingredient JOIN RecipeIngredient ON Ingredient.ingredientId = RecipeIngredient.ingredientId WHERE RecipeIngredient.recipeId = ?");
+$stmt = $conn->prepare("DELETE FROM RecipeIngredient WHERE recipeId = ?");
 $stmt->bind_param("i", $recipeId);
 $stmt->execute();
 
-/**
- * Prepares a SQL statement to insert each recipe ingredient into the database
- */
-header("Location: recipe_admin_view.php?recipeId=$recipeId");
+for ($i = 0; $i < count($ingredientNames); $i++) {
+    $ingredientName = $ingredientNames[$i];
+    $quantity = $quantities[$i];
+
+    /**
+     * Prepares a SQL statement to check if each ingredient already exists in the database
+     */
+    $stmt = $conn->prepare("SELECT ingredientId FROM Ingredient WHERE ingredientName = ?");
+    $stmt->bind_param("s", $ingredientName);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    /**
+     * Check if the ingredient already exists in the database
+     */
+    if ($result->num_rows == 0) {
+
+        /**
+         * Prepares a SQL statement to insert the ingredient into the database
+         */
+        $stmt = $conn->prepare("INSERT INTO Ingredient (ingredientName) VALUES (?)");
+        $stmt->bind_param("s", $ingredientName);
+        $stmt->execute();
+        $ingredientId = $conn->insert_id;
+    } else {
+        $row = $result->fetch_assoc();
+        $ingredientId = $row['ingredientId'];
+    }
+
+    /**
+     * Prepares a SQL statement to insert the recipe ingredient into the database
+     */
+    $stmt = $conn->prepare("INSERT INTO RecipeIngredient (recipeId, ingredientId, quantity) VALUES (?, ?, ?)");
+    $stmt->bind_param("iis", $recipeId, $ingredientId, $quantity);
+    $stmt->execute();
+}
+
+header("Location: admin.php");
 ?>
