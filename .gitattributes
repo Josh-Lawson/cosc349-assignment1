@@ -1,0 +1,7 @@
+* text=auto
+
+setup-database.sql text eol=lf
+insert-data.sql text eol=lf
+user-website.conf text eol=lf
+admin-website.conf text eol=lf
+
