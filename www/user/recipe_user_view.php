@@ -53,9 +53,12 @@ $conn->close();
     </header>
     <main>
         <div class="recipe-details">
+            
+            <a href="../common/view_recipes.php">Back to Recipes</a><br><br>
             <h1>
                 <?php echo $recipe['recipeName']; ?>
             </h1>
+            
             <div class="description-container">
                 <label>Description</label>
                 <ul>

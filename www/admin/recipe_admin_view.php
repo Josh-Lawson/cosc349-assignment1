@@ -53,22 +53,28 @@ $conn->close();
     </header>
     <main>
 
-        <h1>Update Recipe</h1><br>
+        <div class="recipe-details">
+            <a href="../common/view_recipes.php">Back to Recipes</a><br><br>
 
-        <form action="edit_recipe.php" method="POST">
 
-            <h3>Recipe Name</h3>
-            <input type="text" name="recipeName" value="<?php echo $recipe['recipeName']; ?>">
+            <h1>Update Recipe</h1><br>
 
-            <h3>Description</h3>
-            <textarea name="description"><?php echo $recipe['description']; ?></textarea>
+            <form action="edit_recipe.php" method="POST">
 
-            <h3>Instructions</h3>
-            <textarea name="instructions"><?php echo $recipe['instructions']; ?></textarea>
 
-            <h3>Ingredients</h3>
-            <div>
-                <ul>
+
+                <h3>Recipe Name</h3>
+                <input type="text" name="recipeName" value="<?php echo $recipe['recipeName']; ?>">
+
+                <h3>Description</h3>
+                <textarea name="description"><?php echo $recipe['description']; ?></textarea>
+
+                <h3>Instructions</h3>
+                <textarea name="instructions"><?php echo $recipe['instructions']; ?></textarea>
+
+                <h3>Ingredients</h3>
+                <div>
+
                     <?php foreach ($ingredients as $index => $ingredient): ?>
                         <li>
                             <input type="text" name="ingredientName[]" value="<?php echo $ingredient['ingredientName']; ?>">
@@ -76,21 +82,24 @@ $conn->close();
                             <input type="text" name="quantity[]" value="<?php echo $ingredient['quantity']; ?>">
                         </li>
                     <?php endforeach; ?>
-                </ul>
-            </div>
 
-            <input type="hidden" name="recipeId" value="<?php echo $recipeId; ?>">
-            <button type="submit">Update Recipe</button>
+                </div>
 
-        </form>
-        &nbsp;
+                <input type="hidden" name="recipeId" value="<?php echo $recipeId; ?>">
+                <button type="submit">Update Recipe</button>
 
-        <form method="POST" action="delete_recipe.php?recipeId=<?php echo $recipeId; ?>"
+            </form>
+            &nbsp;
+
+            <form method="POST" action="delete_recipe.php?recipeId=<?php echo $recipeId; ?>"
                 onsubmit="return confirm('Are you sure you want to delete this recipe?');">
                 <input type="hidden" name="recipeId" value="<?php echo $recipeId; ?>">
                 <button type="submit">Delete Recipe</button>
 
             </form>
+
+
+        </div>
 
     </main>
 </body>
